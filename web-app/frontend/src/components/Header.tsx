@@ -36,14 +36,26 @@ export const Header = () => {
 };
 
 const sHeader = css`
+  position: relative;
   display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: stretch;
   border-bottom: var(--b-md) solid black;
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 10;
-  background: var(--c-white);
+  background-color: var(--c-white);
+  &::after {
+		content: "";
+		display: block;
+		position: absolute;
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+		bottom:  -15px;
+		left: calc(50% - 49.5%);
+    border-radius: 50px;
+		border: 2px solid black;
+		background-color: var(--c-pink-200);
+	}
 `;
 
 const sMarqueeWrapper = css`
@@ -52,6 +64,7 @@ const sMarqueeWrapper = css`
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  background: white;
   div {
     font-size: 1.2em;
     overflow-x: hidden;
@@ -67,6 +80,7 @@ const sTittle = css`
   justify-content: center;
   width: 50%;
   border-left: 2px solid;
+  background: white;
   h1 {
     font-size: 1.5em;
     font-weight: 500;

@@ -110,7 +110,7 @@ const sInner = css`
   border-radius: 50px;
   background-color: var(--c-white);
   padding: 2em 1.25em;
-	&:after {
+	&::after {
 		content: "";
 		display: block;
 		position: absolute;
