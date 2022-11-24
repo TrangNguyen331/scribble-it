@@ -6,8 +6,8 @@ import { drawLine  } from "@util/drawUtil";
 export const DrawCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [context, setContext] = useState<CanvasRenderingContext2D>()
-  const [lineColor, setLineColor] = useState('#ffffff')
-  const [lineSize, setLineSize] = useState(20)
+  const [lineColor, setLineColor] = useState('#0a0a0a')
+  const [lineSize, setLineSize] = useState(25)
 
   useEffect(() => {
     let mouseDown: boolean = false;
@@ -16,8 +16,8 @@ export const DrawCanvas = () => {
 
     const handleMouseDown = (e: MouseEvent) => {
       mouseDown = true;
-      const canvasOffsetLeft = canvasRef.current ? canvasRef.current.offsetLeft : 0;
-      const canvasOffstTop = canvasRef.current ? canvasRef.current.offsetTop : 0;
+      const canvasOffsetLeft = canvasRef.current ? canvasRef.current.getBoundingClientRect().left : 0;
+      const canvasOffstTop = canvasRef.current ? canvasRef.current.getBoundingClientRect().top : 0;
 
       start = {
         x: e.clientX - canvasOffsetLeft,
@@ -36,9 +36,9 @@ export const DrawCanvas = () => {
   
     const handleMouseMove = (e: MouseEvent) => {
       if (mouseDown && context) {
-        const canvasOffsetLeft = canvasRef.current ? canvasRef.current.offsetLeft : 0
-        const canvasOffstTop = canvasRef.current ? canvasRef.current.offsetTop : 0
-
+        const canvasOffsetLeft = canvasRef.current ? canvasRef.current.getBoundingClientRect().left : 0;
+        const canvasOffstTop = canvasRef.current ? canvasRef.current.getBoundingClientRect().top : 0;
+  
         start = {
           x: end.x,
           y: end.y
@@ -61,7 +61,7 @@ export const DrawCanvas = () => {
 
     if (canvasRef.current) {
       const renderCtx = canvasRef.current.getContext('2d')
-
+      console.log(canvasRef)
       if (renderCtx) {
         canvasRef.current.addEventListener('mousedown', handleMouseDown);
         canvasRef.current.addEventListener('mouseup', handleMouseUp);
@@ -81,15 +81,52 @@ export const DrawCanvas = () => {
   }, [context]);
 
   return (
-    <canvas 
-      ref={canvasRef}
-      className={sCanvas}
-      width={300}
-      height={300}
-    />
+    <>
+      <div className={sWrapper}>
+        <div className={sInner}>
+          <canvas 
+            ref={canvasRef}
+            className={sCanvas}
+            width={500}
+            height={500}
+          />
+        </div>
+      </div> 
+    </>
   )
 }
 
+const sWrapper = css`
+  transition: 0.3s ease;
+`
+
+const sInner = css`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: var(--b-md) solid black;
+  border-radius: 50px;
+  background-color: var(--c-white);
+  padding: 2em 1.25em;
+	&:after {
+		content: "";
+		display: block;
+		position: absolute;
+		z-index: -1;
+		width: 95%;
+		height: 100%;
+		bottom:  -20px;
+		left: calc(50% - 45.5%);
+    border-radius: 50px;
+		border: 2px solid black;
+		background-color: var(--c-pink-200);
+	}
+`
+
 const sCanvas = css`
-  background-color: lightgreen;
+  border-radius: 50px;
+  background-color: var(--c-green-100);
+  z-index: 99;
 `
