@@ -71,6 +71,9 @@ const sMarqueeWrapper = css`
   margin-left: auto;
   margin-right: auto;
   background: white;
+  &:hover {
+    cursor: cell;
+  }
   div {
     font-size: 1.2em;
     overflow-x: hidden;

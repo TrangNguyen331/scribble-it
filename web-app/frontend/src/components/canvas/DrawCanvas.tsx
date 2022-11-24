@@ -6,8 +6,8 @@ import { drawLine  } from "@util/drawUtil";
 export const DrawCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [context, setContext] = useState<CanvasRenderingContext2D>()
-  const [lineColor, setLineColor] = useState('#333333')
-  const [lineSize, setLineSize] = useState(25)
+  const [lineColor, setLineColor] = useState('#4e4e4e')
+  const [lineSize, setLineSize] = useState(30)
 
   useEffect(() => {
     let mouseDown: boolean = false;
@@ -129,4 +129,7 @@ const sCanvas = css`
   border-radius: 50px;
   background-color: var(--c-green-100);
   z-index: 99;
+  &:hover {
+    cursor: crosshair;    
+  }
 `
