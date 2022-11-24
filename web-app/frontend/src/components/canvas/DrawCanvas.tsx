@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState} from "react";
 import { css } from '@emotion/css'
-import { tCoordinates, iDrawLine } from "@type/index";
+import { tCoordinates2D, iDrawLine } from "@type/index";
 import { drawLine  } from "@util/drawUtil";
 
 export const DrawCanvas = () => {
@@ -11,8 +11,8 @@ export const DrawCanvas = () => {
 
   useEffect(() => {
     let mouseDown: boolean = false;
-    let start: tCoordinates = { x: 0, y: 0};
-    let end: tCoordinates = { x: 0, y: 0};
+    let start: tCoordinates2D = { x: 0, y: 0};
+    let end: tCoordinates2D = { x: 0, y: 0};
 
     const handleMouseDown = (e: MouseEvent) => {
       mouseDown = true;
@@ -61,7 +61,6 @@ export const DrawCanvas = () => {
 
     if (canvasRef.current) {
       const renderCtx = canvasRef.current.getContext('2d')
-      console.log(canvasRef)
       if (renderCtx) {
         canvasRef.current.addEventListener('mousedown', handleMouseDown);
         canvasRef.current.addEventListener('mouseup', handleMouseUp);

@@ -3,6 +3,7 @@ import { DrawCanvas } from "@comp/canvas/DrawCanvas"
 import { Loader } from "@comp/Loader"
 import { Container } from "@comp/Container"
 import { Grid } from "@comp/Grid"
+import { LineCanvas } from "@comp/canvas/LineCanvas"
 
 export default function App() {
 
@@ -12,6 +13,7 @@ export default function App() {
         <Grid>
           <DrawCanvas/>
         </Grid>
+        <LineCanvas/>
       </Container>
     </div>
   )
