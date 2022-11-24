@@ -1,20 +1,23 @@
 import React, { useEffect, useRef, useState} from "react";
 import { css } from '@emotion/css'
-import { Coordinates } from "@type/index";
+import { tCoordinates, iDrawLine } from "@type/index";
+import { drawLine  } from "@util/drawUtil";
 
 export const DrawCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [context, setContext] = useState<CanvasRenderingContext2D>()
+  const [lineColor, setLineColor] = useState('#ffffff')
+  const [lineSize, setLineSize] = useState(20)
 
   useEffect(() => {
-    let mouseDown: boolean = false
-    let start: Coordinates = { x: 0, y: 0}
-    let end: Coordinates = { x: 0, y: 0}
+    let mouseDown: boolean = false;
+    let start: tCoordinates = { x: 0, y: 0};
+    let end: tCoordinates = { x: 0, y: 0};
 
     const handleMouseDown = (e: MouseEvent) => {
-      mouseDown = true
-      const canvasOffsetLeft = canvasRef.current ? canvasRef.current.offsetLeft : 0
-      const canvasOffstTop = canvasRef.current ? canvasRef.current.offsetTop : 0
+      mouseDown = true;
+      const canvasOffsetLeft = canvasRef.current ? canvasRef.current.offsetLeft : 0;
+      const canvasOffstTop = canvasRef.current ? canvasRef.current.offsetTop : 0;
 
       start = {
         x: e.clientX - canvasOffsetLeft,
@@ -28,7 +31,7 @@ export const DrawCanvas = () => {
     }
   
     const handleMouseUp = (e: MouseEvent) => {
-      mouseDown = false
+      mouseDown = false;
     }
   
     const handleMouseMove = (e: MouseEvent) => {
@@ -39,21 +42,20 @@ export const DrawCanvas = () => {
         start = {
           x: end.x,
           y: end.y
-        }
+        };
 
         end = {
           x: e.clientX - canvasOffsetLeft,
           y: e.clientY - canvasOffstTop
-        }
-
-        context.beginPath()
-        context.moveTo(start.x, start.y)
-        context.lineTo(end.x, end.y)
-        context.strokeStyle = 'white'
-        context.lineWidth = 20
-        context.lineCap = 'round'
-        context.stroke()
-        context.closePath()
+        };
+        
+        drawLine({ 
+          c: context, 
+          from: start, 
+          to: end,
+          color: lineColor,
+          size: lineSize
+        });
       }
     }
 
@@ -61,22 +63,22 @@ export const DrawCanvas = () => {
       const renderCtx = canvasRef.current.getContext('2d')
 
       if (renderCtx) {
-        canvasRef.current.addEventListener('mousedown', handleMouseDown)
-        canvasRef.current.addEventListener('mouseup', handleMouseUp)
-        canvasRef.current.addEventListener('mousemove', handleMouseMove)
+        canvasRef.current.addEventListener('mousedown', handleMouseDown);
+        canvasRef.current.addEventListener('mouseup', handleMouseUp);
+        canvasRef.current.addEventListener('mousemove', handleMouseMove);
         
-        setContext(renderCtx)
+        setContext(renderCtx);
       }
     }
 
     return () => {
       if (canvasRef.current) {
-        canvasRef.current.removeEventListener('mousedown', handleMouseDown)
-        canvasRef.current.removeEventListener('mouseup', handleMouseUp)
-        canvasRef.current.removeEventListener('mousemove', handleMouseMove)
+        canvasRef.current.removeEventListener('mousedown', handleMouseDown);
+        canvasRef.current.removeEventListener('mouseup', handleMouseUp);
+        canvasRef.current.removeEventListener('mousemove', handleMouseMove);
       }
     }
-  }, [context])
+  }, [context]);
 
   return (
     <canvas 
