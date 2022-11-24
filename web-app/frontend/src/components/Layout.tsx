@@ -1,8 +1,9 @@
 import React from "react";
+import { css } from "@emotion/css";
 
 import { Header } from "@comp/Header"
 import { Container } from "@comp/Container"
-import { css } from "@emotion/css";
+import { Cursor } from "@comp/Cursor"
 
 interface Props {
   children: React.ReactNode;
@@ -19,6 +20,7 @@ export const Layout = (props: Props) => {
           { children }
         </div>
       </Container>
+      <Cursor/>
     </>
   )
 }
