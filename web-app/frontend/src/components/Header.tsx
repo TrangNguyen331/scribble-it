@@ -27,7 +27,7 @@ export const Header = () => {
             <Link to={"/"}>Home</Link>
           </div>
           <div>
-            <Link to={"/"}>About Project</Link>
+            <Link to={"/about"}>About</Link>
           </div>
           <div>
             <a href='#'>Digits Handwriting</a>
