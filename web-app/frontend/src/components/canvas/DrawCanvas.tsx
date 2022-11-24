@@ -6,7 +6,7 @@ import { drawLine  } from "@util/drawUtil";
 export const DrawCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [context, setContext] = useState<CanvasRenderingContext2D>()
-  const [lineColor, setLineColor] = useState('#0a0a0a')
+  const [lineColor, setLineColor] = useState('#333333')
   const [lineSize, setLineSize] = useState(25)
 
   useEffect(() => {
@@ -97,6 +97,7 @@ export const DrawCanvas = () => {
 
 const sWrapper = css`
   transition: 0.3s ease;
+  z-index: 1;
 `
 
 const sInner = css`

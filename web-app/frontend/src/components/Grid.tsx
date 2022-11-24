@@ -18,10 +18,13 @@ export const Grid = (props: Props) => {
 }
 
 const sGrid = css`
-  background-color: #F3F3F5;
   padding-left: 1.25em;
   padding-right: 1.25em;
   padding-top: 2em;
   padding-bottom: 4em;
-  z-index: 1;
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `

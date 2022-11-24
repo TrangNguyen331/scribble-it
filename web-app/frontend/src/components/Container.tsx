@@ -24,11 +24,13 @@ const sContainer = css`
   bottom: 0;
   left: 0;
 	display: flex;
-	justify-content: center;
+  flex-direction: column;
 	align-items: center;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 15px;
   height: 90vh;
   width: 95vw;
   margin: auto;
   border: 3px solid black;
+  z-index: 999;
+  overflow: hidden;
 `
