@@ -9,8 +9,14 @@ export const Header = () => {
       <div className={sHeader}>
         <div className={sMarqueeWrapper}>
           <Marquee speed={80} gradient={false}>
-            20110580 - Nguyễn Thị Thùy Trang <span style={{ marginLeft: '10px', marginRight: '10px' }}/>
-            20110135 - Lê Thị Thanh Tuyết
+            <span style={{ marginLeft: '50px', marginRight: '50px', padding: '5px' }}>
+              <span style={{ marginLeft: '10px', marginRight: '50px' }}>
+                20110580 - Nguyễn Thị Thùy Trang
+              </span>
+              <span style={{ marginLeft: '10px', marginRight: '50px' }}>
+                20110135 - Lê Thị Thanh Tuyết
+              </span>
+            </span>
           </Marquee>
         </div>
         <div className={sTittle}>
@@ -109,7 +115,7 @@ const sGrid = css`
       cursor: crosshair;    
     }
     a {
-      padding: 0;
+      padding: 5px 10px;
       margin: 0;
       width: 100%;
       height: 100%;
