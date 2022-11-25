@@ -67,6 +67,7 @@ const sHeader = css`
 `;
 
 const sMarqueeWrapper = css`
+  user-select: none;
   padding: 0.5em 1.875em;
   display: flex;
   width: 100%;
@@ -84,6 +85,7 @@ const sMarqueeWrapper = css`
 `;
 
 const sTittle = css`
+  user-select: none;
   padding: 0.5em 1em;
   display: flex;
   display: flex;
@@ -126,6 +128,7 @@ const sGrid = css`
       cursor: crosshair;    
     }
     a {
+      user-select: none;
       padding: 5px 10px;
       margin: 0;
       width: 100%;

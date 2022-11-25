@@ -77,7 +77,7 @@ const sWrapper = css`
   width: 200px;
   margin-top: 2.5em;
   margin-bottom: 1em;
-  transition: 0.3s ease;
+  transition: 0.1s ease;
   z-index: 1;
   &:hover {
     cursor: pointer;
@@ -93,6 +93,7 @@ const sWrapper = css`
     span {
       background-color: var(--c-pink-300);
     }
+    transform: scale(0.9);
   }
 `
 

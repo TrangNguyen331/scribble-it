@@ -1,9 +1,19 @@
 import React, { useEffect, useRef } from "react";
 import { css } from "@emotion/css";
 
-export const SketchButton = () => {
+interface Props {
+  context: CanvasRenderingContext2D;
+}
+
+export const DownloadButton = ({ context }: Props) => {
   const buttonRef = useRef<HTMLDivElement>(null)
   const effectRef = useRef<HTMLSpanElement>(null)
+
+  const onClickHandle = () => {
+    if (context) {
+      context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+    }
+  }
 
   useEffect(() => {
     const handleMouseEnter = (e: MouseEvent) => {
@@ -48,13 +58,18 @@ export const SketchButton = () => {
 
   return (
     <>
-      <div ref={buttonRef} className={sWrapper}>
+      <div ref={buttonRef} className={sWrapper} onClick={onClickHandle}>
         <a className={sInner}>
           <div className={sTitle}>
-            Dự đoán
+            Lưu ảnh
           </div>
           <div className={sEffectWrapper}>
             <span ref={effectRef} className={sEffect}/>
+          </div>
+          <div className={sIcon}>
+            <svg viewBox="0 0 24 24">
+              <path d="M 4,12 C 4,12 12,20 12,20 C 12,20 20,12 20,12"></path>
+            </svg>
           </div>
         </a>
       </div>
@@ -63,6 +78,9 @@ export const SketchButton = () => {
 }
 
 const sWrapper = css`
+  position: absolute;
+  right: 3%;
+  bottom: 3%;
   height: 80px;
   width: 200px;
   margin-top: 2.5em;
@@ -72,17 +90,14 @@ const sWrapper = css`
   &:hover {
     cursor: pointer;
     a::after {
-      background-color: var(--c-green-300);
+      background-color: var(--c-pink-300);
     }
     span {
       width: 550px;
       height: 550px;
     }
   }
-  &:active  {
-    span {
-      background-color: var(--c-green-300);
-    }
+  &:active {
     transform: scale(0.9);
   }
 `
@@ -90,38 +105,27 @@ const sWrapper = css`
 const sInner = css`
   position: relative;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   border: var(--b-md) solid black;
   border-radius: 25px;
   background-color: var(--c-white);
   transition: 0.2s ease;
-  &::after {
-		content: "";
-		display: block;
-		position: absolute;
-		z-index: -1;
-		width: 95%;
-		height: 100%;
-		bottom:  -12px;
-		left: calc(50% - 46.5%);
-    border-radius: 25px;
-		border: 2px solid black;
-		background-color: var(--c-green-200);
-  }
   &:active {
-    background-color: var(--c-green-300);
+    & > :nth-child(3) {
+    background-color: var(--c-pink-300);
+    }
   }
 `
 
 const sTitle = css`
   user-select: none;
   pointer-events: none;
-  font-size: 1.5em;
+  font-size: 1.25em;
   font-weight: 500;
   line-height: 20px;
-  padding: 1.25em 1.5em;
+  padding: 0.875em 1em;
   z-index: 1;
 `
 
@@ -144,9 +148,60 @@ const sEffect = css`
   width: 0;
   height: 0;
   border-radius: 50%;
-  background-color: var(--c-green-100);
+  background-color: var(--c-pink-100);
   transition: width 0.4s ease-in-out, height 0.4s ease-in-out;
   transform: translate(-50%, -50%);
   overflow: hidden;
   transition: 0.2s ease;
+`
+
+const sIcon = css`
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background: var(--c-pink-200);
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-left: 3px solid black;
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 1px;
+    width: 2px;
+    top: 50%;
+    left: 50%;
+    height: 17px;
+    margin: -9px 0 0 -1px;
+    background: var(--c-white);
+  }
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    transform-origin: 50% 0;
+    border-radius: 0 0 80% 80%;
+    background: var(--c-white);
+    top: 0;
+    left: 0;
+    transform: scaleY(0);
+  }
+
+  svg {
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 50%;
+    top: 50%;
+    margin: -9px 0 0 -10px;
+    fill: none;
+    z-index: 1;
+    stroke-width: 2px;
+    stroke: var(--c-white);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
 `
