@@ -34,7 +34,7 @@ export default class Camera {
 
   private configCamera(): void {
     this.camera.position.x = -10;
-    this.camera.position.z = 20;
+    this.camera.position.z = 100;
     this.camera.position.y = 100;
     this.camera.lookAt(new $.Vector3(0, 0, 0));
   }

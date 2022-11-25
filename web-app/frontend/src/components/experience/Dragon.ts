@@ -22,7 +22,8 @@ export default class Dragon {
   }
 
   update() {
-    this.body.rotation.x += 0.01
+    this.body.rotation.x += 0.001
+    this.body.rotation.y += 0.001
   }
 }
 

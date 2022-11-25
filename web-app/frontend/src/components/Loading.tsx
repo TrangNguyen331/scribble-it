@@ -17,7 +17,7 @@ export const Loading = () => {
 const trans = { duration: 0.8, ease: "easeInOut" };
 const vLoader: Variants = {
   enter: { opacity: 1, x: "-50%",  y: 0, scale: 1, transition: trans  },
-  hidden: { opacity: 0, x: 0,  y: 0, scale: 1.5, zIndex: -99, transition: trans },
+  hidden: { opacity: 0, x: 0,  y: 0, scale: 1.5, zIndex: -9999, transition: trans },
   exit: { },
 }
 

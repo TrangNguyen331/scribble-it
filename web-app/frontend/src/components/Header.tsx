@@ -6,34 +6,36 @@ import Marquee from "react-fast-marquee";
 export const Header = () => {
   return (
     <>
-      <div className={sHeader}>
-        <div className={sMarqueeWrapper}>
-          <Marquee speed={80} gradient={false}>
-            <span style={{ marginLeft: '50px', marginRight: '50px', padding: '5px' }}>
-              <span style={{ marginLeft: '10px', marginRight: '50px' }}>
-                20110580 - Nguyễn Thị Thùy Trang
+      <div style={{ zIndex: 999 }}>
+        <div className={sHeader}>
+          <div className={sMarqueeWrapper}>
+            <Marquee speed={80} gradient={false}>
+              <span style={{ marginLeft: '50px', marginRight: '50px', padding: '5px' }}>
+                <span style={{ marginLeft: '10px', marginRight: '50px' }}>
+                  20110580 - Nguyễn Thị Thùy Trang
+                </span>
+                <span style={{ marginLeft: '10px', marginRight: '50px' }}>
+                  20110135 - Lê Thị Thanh Tuyết
+                </span>
               </span>
-              <span style={{ marginLeft: '10px', marginRight: '50px' }}>
-                20110135 - Lê Thị Thanh Tuyết
-              </span>
-            </span>
-          </Marquee>
-        </div>
-        <div className={sTittle}>
-          <h1>AI Final Project</h1>
-        </div>
-        <div className={sGrid}>
-          <div>
-            <Link to={"/"}>Trang Chủ</Link>
+            </Marquee>
           </div>
-          <div>
-            <Link to={"/about"}>Giới thiệu</Link>
+          <div className={sTittle}>
+            <h1>AI Final Project</h1>
           </div>
-          <div>
-            <a href='#'>Digits Handwriting</a>
-          </div>
-          <div>
-            <Link to={"/"}>Characters Handwriting</Link>
+          <div className={sGrid}>
+            <div>
+              <Link to={"/"}>Trang Chủ</Link>
+            </div>
+            <div>
+              <Link to={"/about"}>Giới thiệu</Link>
+            </div>
+            <div>
+              <a href='#'>Digits Handwriting</a>
+            </div>
+            <div>
+              <Link to={"/"}>Characters Handwriting</Link>
+            </div>
           </div>
         </div>
       </div>
