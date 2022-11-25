@@ -1,9 +1,19 @@
 import React, { useEffect, useRef } from "react";
 import { css } from "@emotion/css";
 
-export const ReloadButton = () => {
+interface Props {
+  context: CanvasRenderingContext2D;
+}
+
+export const ReloadButton = ({ context }: Props) => {
   const buttonRef = useRef<HTMLDivElement>(null)
   const effectRef = useRef<HTMLSpanElement>(null)
+
+  const onClickHandle = () => {
+    if (context) {
+      context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+    }
+  }
 
   useEffect(() => {
     const handleMouseEnter = (e: MouseEvent) => {
@@ -48,7 +58,7 @@ export const ReloadButton = () => {
 
   return (
     <>
-      <div ref={buttonRef} className={sWrapper}>
+      <div ref={buttonRef} className={sWrapper} onClick={onClickHandle}>
         <a className={sInner}>
           <div className={sTitle}>
             Clear
@@ -79,6 +89,11 @@ const sWrapper = css`
       height: 550px;
     }
   }
+  &:active  {
+    span {
+      background-color: var(--c-pink-300);
+    }
+  }
 `
 
 const sInner = css`
@@ -90,7 +105,7 @@ const sInner = css`
   border: var(--b-md) solid black;
   border-radius: 25px;
   background-color: var(--c-white);
-  transition: 0.5s ease;
+  transition: 0.2s ease;
   &::after {
 		content: "";
 		display: block;
@@ -105,9 +120,14 @@ const sInner = css`
 		background-color: var(--c-pink-200);
     transition: 1s ease;
   }
+  &:active {
+    background-color: var(--c-pink-300);
+  }
 `
 
 const sTitle = css`
+  user-select: none;
+  pointer-events: none;
   font-size: 1.5em;
   font-weight: 500;
   line-height: 20px;
@@ -138,4 +158,5 @@ const sEffect = css`
   transition: width 0.4s ease-in-out, height 0.4s ease-in-out;
   transform: translate(-50%, -50%);
   overflow: hidden;
+  transition: 0.2s ease;
 `

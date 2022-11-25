@@ -93,7 +93,7 @@ export const DrawCanvas = () => {
           />
           <div className={sGrid}>
             <SketchButton/>
-            <ReloadButton/>
+            <ReloadButton context={context!}/>
           </div>
         </div>
       </div> 

@@ -79,6 +79,11 @@ const sWrapper = css`
       height: 550px;
     }
   }
+  &:active  {
+    span {
+      background-color: var(--c-green-300);
+    }
+  }
 `
 
 const sInner = css`
@@ -90,7 +95,7 @@ const sInner = css`
   border: var(--b-md) solid black;
   border-radius: 25px;
   background-color: var(--c-white);
-  transition: 0.s ease;
+  transition: 0.2s ease;
   &::after {
 		content: "";
 		display: block;
@@ -104,9 +109,14 @@ const sInner = css`
 		border: 2px solid black;
 		background-color: var(--c-green-200);
   }
+  &:active {
+    background-color: var(--c-green-300);
+  }
 `
 
 const sTitle = css`
+  user-select: none;
+  pointer-events: none;
   font-size: 1.5em;
   font-weight: 500;
   line-height: 20px;
@@ -137,4 +147,5 @@ const sEffect = css`
   transition: width 0.4s ease-in-out, height 0.4s ease-in-out;
   transform: translate(-50%, -50%);
   overflow: hidden;
+  transition: 0.2s ease;
 `
