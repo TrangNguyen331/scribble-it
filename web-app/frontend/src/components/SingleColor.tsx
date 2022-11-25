@@ -13,7 +13,7 @@ export const SingleColor = ({ color, pickColor, setPickColor}: Props) => {
   }
 
   return (
-    <div 
+    <a 
       className={sColorContainer(color, pickColor)}
       style={{ background: color }}
       onClick={onClickHandle}
