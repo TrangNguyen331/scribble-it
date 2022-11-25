@@ -69,7 +69,7 @@ export const Cursor = () => {
   );
 }
 
-const sCursor =(clicked: boolean, hidden: boolean, linkHovered: boolean) => css`
+const sCursor = (clicked: boolean, hidden: boolean, linkHovered: boolean) => css`
   width: 30px;
   height: 30px;
   background: var(--c-pink-200);
