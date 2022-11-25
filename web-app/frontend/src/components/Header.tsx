@@ -123,6 +123,10 @@ const sGrid = css`
     background: linear-gradient(to left, white 50%, var(--c-pink-200) 50%) right;
     background-size: 200%;
     transition: .3s ease-out;
+    &:active {
+      transition: .1s ease;
+      background: var(--c-pink-300);
+    }
     &:hover {
       background-position: left;
       cursor: crosshair;    
@@ -138,6 +142,7 @@ const sGrid = css`
       text-decoration: none;
       font-size: 1.2em;
       font-weight: 400;
+      transition: .3s ease-out;
       &:hover {
         cursor: crosshair;    
       }

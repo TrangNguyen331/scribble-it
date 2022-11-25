@@ -17,7 +17,7 @@ export const XmasCanvas = ({ setIsLoading }: Props) => {
   const playMusic = () => {
     if (!musicPlay) {
       audio.play()
-      audio.volume = 0.2
+      audio.volume = 0.5
       audio.loop = true
       musicPlay = true
     } else {

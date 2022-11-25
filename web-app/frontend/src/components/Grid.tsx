@@ -21,7 +21,7 @@ const sGrid = css`
   padding-left: 1.25em;
   padding-right: 1.25em;
   padding-top: 2em;
-  padding-bottom: 4em;
+  padding-bottom: 2em;
   z-index: -1;
   display: flex;
   flex-direction: column;

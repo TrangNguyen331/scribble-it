@@ -4,6 +4,7 @@ import { tCoordinates2D, iDrawLine } from "@type/index";
 import { drawLine  } from "@util/drawUtil";
 import { SketchButton } from "@comp/button/SketchButton";
 import { ReloadButton } from "@comp/button/ReloadButton";
+import { DownloadButton } from "@comp/button/DownloadButton";
 
 export const DrawCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -96,7 +97,8 @@ export const DrawCanvas = () => {
             <ReloadButton context={context!}/>
           </div>
         </div>
-      </div> 
+      </div>
+      <DownloadButton context={context!}/>
     </>
   )
 }

@@ -9,10 +9,16 @@ export const DownloadButton = ({ context }: Props) => {
   const buttonRef = useRef<HTMLDivElement>(null)
   const effectRef = useRef<HTMLSpanElement>(null)
 
-  const onClickHandle = () => {
-    if (context) {
-      context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-    }
+  const downloadHandle = () => {
+    const anchor = document.createElement('a');
+    const date = new Date(Date.now())
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const yeath = date.getFullYear();
+    const time = date.getTime().toString();
+    anchor.download = 'scribble_it_'+day+month+yeath+'_'+time+'.png';
+    anchor.href = context.canvas.toDataURL();
+    anchor.click();
   }
 
   useEffect(() => {
@@ -58,7 +64,7 @@ export const DownloadButton = ({ context }: Props) => {
 
   return (
     <>
-      <div ref={buttonRef} className={sWrapper} onClick={onClickHandle}>
+      <div ref={buttonRef} className={sWrapper} onClick={downloadHandle}>
         <a className={sInner}>
           <div className={sTitle}>
             Lưu ảnh
@@ -79,8 +85,8 @@ export const DownloadButton = ({ context }: Props) => {
 
 const sWrapper = css`
   position: absolute;
-  right: 3%;
-  bottom: 3%;
+  right: 2%;
+  bottom: 0;
   height: 80px;
   width: 200px;
   margin-top: 2.5em;
