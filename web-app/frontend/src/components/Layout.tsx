@@ -28,5 +28,5 @@ export const Layout = (props: Props) => {
 const sWrapperContent = css`
   width: 100%;
   height: 100%;
-  margin-top: 3em;
+  margin-top: 2em;
 `

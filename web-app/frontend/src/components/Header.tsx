@@ -24,10 +24,10 @@ export const Header = () => {
         </div>
         <div className={sGrid}>
           <div>
-            <Link to={"/"}>Home</Link>
+            <Link to={"/"}>Trang Chủ</Link>
           </div>
           <div>
-            <Link to={"/about"}>About</Link>
+            <Link to={"/about"}>Giới thiệu</Link>
           </div>
           <div>
             <a href='#'>Digits Handwriting</a>
@@ -89,7 +89,13 @@ const sTittle = css`
   justify-content: center;
   width: 50%;
   border-left: 2px solid;
-  background: white;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    var(--c-pink-100) 6px,
+    var(--c-pink-100) 12px
+  );
   h1 {
     font-size: 1.5em;
     font-weight: 500;

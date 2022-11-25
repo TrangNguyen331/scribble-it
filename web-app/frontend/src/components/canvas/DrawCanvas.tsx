@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState} from "react";
 import { css } from '@emotion/css'
 import { tCoordinates2D, iDrawLine } from "@type/index";
 import { drawLine  } from "@util/drawUtil";
+import { SketchButton } from "@comp/button/SketchButton";
 
 export const DrawCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -89,6 +90,7 @@ export const DrawCanvas = () => {
             width={500}
             height={500}
           />
+          <SketchButton/>
         </div>
       </div> 
     </>
@@ -130,6 +132,6 @@ const sCanvas = css`
   background-color: var(--c-green-100);
   z-index: 99;
   &:hover {
-    cursor: crosshair;    
+    cursor: cell;    
   }
 `
