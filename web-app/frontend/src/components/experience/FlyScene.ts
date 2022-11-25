@@ -318,7 +318,7 @@ class Carrot {
   
 
   update() {
-    var targetY = normalize(this.mousePos.y, -.75, .75, -100, 50);
+    var targetY = normalize(this.mousePos.y, -.75, .75, -100, 20);
     var targetX = normalize(this.mousePos.x, -.75, .75, -50, 20);
     // this.mesh.position.y += (targetY - this.mesh.position.y) * 0.1;
     // this.mesh.position.x += (targetX - this.mesh.position.x) * 0.1;
@@ -338,8 +338,6 @@ class Carrot {
       yoyo: true,
       ease: "circle"
     });
-
-    console.log(targetY)
   }
 }
 

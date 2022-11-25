@@ -10,7 +10,29 @@ interface Props {
 
 export const XmasCanvas = ({ setIsLoading }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  
+  const audio = new Audio();
+  audio.src = '/sounds/xmas.mp3';
+  let musicPlay = false
+
+  const playMusic = () => {
+    if (!musicPlay) {
+      audio.play()
+      audio.volume = 0.2
+      audio.loop = true
+      musicPlay = true
+    } else {
+        audio.pause()
+        musicPlay = false
+    }
+  }
+
+  const stopMusic = () => {
+    if (musicPlay) {
+      musicPlay = false;
+      audio.pause();
+    }
+  }
+
   useEffect(() => {
     let animationFrameId: number;
     let experience: Experience | undefined | null;
@@ -18,6 +40,7 @@ export const XmasCanvas = ({ setIsLoading }: Props) => {
       experience = new Experience(canvasRef.current, true)
       if (experience) {
         setTimeout(() => {
+          playMusic();
           experience!.setRender(true)
           animationFrameId = experience!.time.animationFrameId!
           setIsLoading(false);
@@ -26,6 +49,7 @@ export const XmasCanvas = ({ setIsLoading }: Props) => {
     }
 
     return () => {
+      stopMusic();
       experience?.removeEvents();
       experience?.setRender(false)
       window.cancelAnimationFrame(animationFrameId);
