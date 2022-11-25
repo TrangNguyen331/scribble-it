@@ -23,6 +23,7 @@ const vLoader: Variants = {
 
 const sLoader = css`
   position: absolute;
+  display: block;
   width: 100vw;
   height: 100vw;
   top: 0;

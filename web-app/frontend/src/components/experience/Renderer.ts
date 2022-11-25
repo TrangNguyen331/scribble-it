@@ -32,14 +32,14 @@ class Renderer {
 
   private configRenderer(): void {
     // real shadows
-    // this.renderer.shadowMap.enabled = true;
+    this.renderer.shadowMap.enabled = true;
     // this.renderer.shadowMap.type = $.PCFShadowMap;
     // this.renderer.physicallyCorrectLights = true;
     // this.renderer.outputEncoding = $.sRGBEncoding;
     // this.renderer.toneMapping = $.ACESFilmicToneMapping;
     // this.renderer.toneMappingExposure = 1.25;
 
-    // this.renderer.setClearColor(new $.Color(0xffffff));
+    this.renderer.setClearColor(0xc5f5f5, .7);
     this.renderer.setSize(this.size.width, this.size.height);
     this.renderer.setPixelRatio(this.size.pixelRatio);
   }

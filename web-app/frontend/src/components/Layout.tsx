@@ -1,6 +1,7 @@
 import React from "react";
 import { css } from "@emotion/css";
 
+import { Loading } from "./Loading";
 import { Header } from "@comp/Header"
 import { Container } from "@comp/Container"
 import { Cursor } from "@comp/Cursor"

@@ -12,10 +12,10 @@ export default class Camera {
 
   constructor() {
     this.camera = new $.PerspectiveCamera(
-      60,
+      45,
       this.size.aspect,
       1,
-      2000
+      1000
     )
 
     this.controls = new OrbitControls(
@@ -33,20 +33,20 @@ export default class Camera {
   }
 
   private configCamera(): void {
-    this.camera.position.x = -10;
-    this.camera.position.z = 100;
-    this.camera.position.y = 100;
+    this.camera.position.set(40, 20, 80);
     this.camera.lookAt(new $.Vector3(0, 0, 0));
   }
 
   private configControl(): void {
-    this.controls.enabled = true;
-    this.controls.enableDamping = true;
-    this.controls.enableZoom = true;
-    this.controls.enablePan = true;
-    this.controls.enableRotate = true;
+    // this.controls.enabled = true;
+    // this.controls.enableDamping = true;
+    // this.controls.enableZoom = true;
+    // this.controls.enablePan = true;
+    // this.controls.enableRotate = true;
     // this.controls.minPolarAngle = -Math.PI / 2;
     // this.controls.maxPolarAngle = Math.PI / 2;
+    this.controls.minDistance = 50;
+    this.controls.maxDistance = 250;
   }
 
   //---------- Event ----------

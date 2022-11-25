@@ -1,10 +1,14 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, Suspense } from "react";
 import * as $ from 'three';
 import { css } from "@emotion/css";
 
 import Experience from "@comp/experience/Experience";
 
-export const XmasCanvas = () => {
+interface Props {
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export const XmasCanvas = ({ setIsLoading }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   
   useEffect(() => {
@@ -13,8 +17,11 @@ export const XmasCanvas = () => {
     if (canvasRef.current) {
       experience = new Experience(canvasRef.current, true)
       if (experience) {
-        experience.setRender(true)
-        animationFrameId = experience.time.animationFrameId!
+        setTimeout(() => {
+          experience!.setRender(true)
+          animationFrameId = experience!.time.animationFrameId!
+          setIsLoading(false);
+        }, 1000)
       }
     }
 
@@ -27,10 +34,13 @@ export const XmasCanvas = () => {
 
   return (
     <>
-      <canvas
-        ref={canvasRef}
-        className={sCanvas}
-      />
+      <Suspense fallback={null}>
+        <canvas
+          ref={canvasRef}
+          className={sCanvas}
+          onLoad={() => window.location.reload()}
+          />  
+      </Suspense>
     </>
   )
 }

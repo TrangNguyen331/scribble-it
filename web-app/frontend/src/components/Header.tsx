@@ -25,7 +25,7 @@ export const Header = () => {
           </div>
           <div className={sGrid}>
             <div>
-              <Link to={"/"}>Trang Chủ</Link>
+              <Link to={"/"} onLoad={() => window.location.reload()}>Trang Chủ</Link>
             </div>
             <div>
               <Link to={"/about"}>Giới thiệu</Link>

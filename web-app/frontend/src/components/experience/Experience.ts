@@ -43,9 +43,10 @@ export default class Experience {
   }
 
   configScene() {
-    this.scene.fog = new $.FogExp2(0xececec, 0.005);
-    this.scene.background = new $.Color('#FFFFFF')
-    this.scene.add(this.world.threeWorld)
+    this.scene.fog = new $.Fog(0xd5f8f8, 100, 300);
+    // this.scene.background = new $.Color('#FFFFFF');
+    this.scene.add(this.world.threeWorld);
+    this.scene.add(this.camera.camera);
   }
 
   bindEvent() {

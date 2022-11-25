@@ -2,7 +2,7 @@ import * as $ from 'three';
 import Experience from '@core/Experience';
 
 import Environment from './Environment';
-import Dragon from './Dragon';
+import FlyScene from './FlyScene';
 
 class World {
 
@@ -13,24 +13,23 @@ class World {
 
   // private sky: Sky;
   private environment: Environment;
-  private dragon: Dragon; 
+  private flyScene: FlyScene; 
 
   constructor() {
     this.threeWorld = new $.Group();
     this.environment = new Environment();
-    this.dragon = new Dragon();
+    this.flyScene = new FlyScene();
 
     this.init();
   }
 
   private init(): void {
     // environment
+    this.threeWorld.add(this.environment.ambientLight);
     this.threeWorld.add(this.environment.hemisLight);
     this.threeWorld.add(this.environment.shadowLight);
-    this.threeWorld.add(this.environment.backLight);
 
-    // kanna
-    this.threeWorld.add(this.dragon.threeGroup);
+    this.threeWorld.add(this.flyScene.threeGroup);
   }
 
   public resize(): void {
@@ -39,7 +38,7 @@ class World {
 
   public update(): void {
     this.environment.update();
-    this.dragon.update();
+    this.flyScene.update();
   }
 }
 
