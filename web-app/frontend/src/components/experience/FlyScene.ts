@@ -36,7 +36,7 @@ export default class FlyScene {
   private carrot: Carrot;
 
   constructor() {
-    console.log('   🎄 %c Merry christmas                    ', 'background: #1d2d44; color: #29bf12');
+    console.log('   🎄 %c Merry Christmas                    ', 'background: #1d2d44; color: #29bf12');
     console.log('   🎄 %c 20110580 - Nguyễn Thị Thùy Trang   ', 'background: #1d2d44; color: #29bf12');
     console.log('   🎄 %c 20110135 - Lê Thị Thanh Tuyết      ', 'background: #1d2d44; color: #29bf12');
     this.threeGroup = new $.Group()
