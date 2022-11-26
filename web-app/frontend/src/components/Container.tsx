@@ -30,7 +30,7 @@ const sContainer = css`
   height: 90vh;
   width: 95vw;
   margin: auto;
-  border: 3px solid black;
+  border: 4px solid black;
   z-index: 999;
   overflow: hidden;
 `

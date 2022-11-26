@@ -1,17 +1,19 @@
 import React, { useEffect, useRef, useState} from "react";
 import { css } from '@emotion/css'
+
 import { tCoordinates2D, iDrawLine } from "@type/index";
 import { drawLine  } from "@util/drawUtil";
 import { SketchButton } from "@comp/button/SketchButton";
 import { ReloadButton } from "@comp/button/ReloadButton";
 import { DownloadButton } from "@comp/button/DownloadButton";
 import { ColorPicker } from "@comp/ColorPicker";
+import { SizeRange } from "@comp/SizeRange";
 
 export const DrawCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [context, setContext] = useState<CanvasRenderingContext2D>()
   const [lineColor, setLineColor] = useState('rgb(78, 78, 78)')
-  const [lineSize, setLineSize] = useState(30)
+  const [lineSize, setLineSize] = useState(25)
 
   useEffect(() => {
     let mouseDown: boolean = false;
@@ -81,7 +83,7 @@ export const DrawCanvas = () => {
         canvasRef.current.removeEventListener('mousemove', handleMouseMove);
       }
     }
-  }, [context, lineColor]);
+  }, [context, lineColor, lineSize]);
 
   return (
     <>
@@ -100,6 +102,7 @@ export const DrawCanvas = () => {
         </div>
       </div>
       <ColorPicker pickColor={lineColor} setPickColor={setLineColor}/>
+      <SizeRange lineSize={lineSize} setLineSize={setLineSize}/>
       <DownloadButton context={context!}/>
     </>
   )

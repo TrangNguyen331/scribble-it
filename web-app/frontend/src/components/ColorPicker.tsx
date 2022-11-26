@@ -25,7 +25,8 @@ export const ColorPicker = ({ pickColor, setPickColor }: Props) => {
       <div className={sWrapper}>
         <div className={sColorList}>
           { colorList.map((color) => (
-            <SingleColor 
+            <SingleColor
+              key={color}
               color={color} 
               pickColor={pickColor}
               setPickColor={setPickColor}
