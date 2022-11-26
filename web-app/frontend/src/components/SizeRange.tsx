@@ -30,8 +30,8 @@ const height = "50px";
 const trackHeight = "10px";
 const thumbHeight = 30;
 
-const upperColor = "#eaf8f1";
-const lowerColor = "#9ae3c1";
+const upperColor = "#e5f4ed";
+const lowerColor = "#BFE6D4";
 const thumbColor = "#FAD0D1";
 const thumbHoverColor = "#f9a0a2";
 const upperBackground = `linear-gradient(to bottom, ${upperColor}, ${upperColor}) 100% 50% / 100% ${trackHeight} no-repeat transparent`;
