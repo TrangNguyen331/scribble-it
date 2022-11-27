@@ -96,7 +96,7 @@ export const DrawCanvas = () => {
             height={400}
           />
           <div className={sGrid}>
-            <SketchButton/>
+            <SketchButton context={context!}/>
             <ReloadButton context={context!}/>
           </div>
         </div>

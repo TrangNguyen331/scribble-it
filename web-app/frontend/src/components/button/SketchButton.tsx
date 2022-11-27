@@ -1,9 +1,20 @@
 import React, { useEffect, useRef } from "react";
 import { css } from "@emotion/css";
+import { usePredictDigits } from "@hook/useQueries"
+interface Props {
+  context: CanvasRenderingContext2D;
+}
 
-export const SketchButton = () => {
+export const SketchButton = ({ context }: Props) => {
   const buttonRef = useRef<HTMLDivElement>(null)
   const effectRef = useRef<HTMLSpanElement>(null)
+
+  const onClickHandle = () => {
+    const imageData = context.getImageData(0, 0, context.canvas.width, context.canvas.height);
+    const imageBase64 = context.canvas.toDataURL()
+    
+    const data = usePredictDigits(imageBase64)
+  }
 
   useEffect(() => {
     const handleMouseEnter = (e: MouseEvent) => {
@@ -48,7 +59,7 @@ export const SketchButton = () => {
 
   return (
     <>
-      <div ref={buttonRef} className={sWrapper}>
+      <div ref={buttonRef} className={sWrapper} onClick={onClickHandle}>
         <a className={sInner}>
           <div className={sTitle}>
             Dự đoán
