@@ -1,10 +1,7 @@
 from fastapi import APIRouter, Form
 import numpy as np
 import base64
-from PIL import Image
 import cv2
-import re
-import io
 
 keras_router = APIRouter(prefix='/api', tags=['Keras'])
 
@@ -33,12 +30,3 @@ async def predict_digits(
 @keras_router.get('/predict_characters')
 async def predict_characters() -> dict:
   return { "value": "One"}
-
-
-# def decode_base64(data, altchars=b'+/'):
-#     """ Decode base64, padding being optional """
-#     data = re.sub(rb'[^a-zA-Z0-9%s]+' % altchars, b'', data)  # normalize
-#     missing_padding = len(data) % 4
-#     if missing_padding:
-#         data += b'='* (4 - missing_padding)
-#     return base64.b64decode(data, altchars)
