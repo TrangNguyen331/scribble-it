@@ -12,7 +12,7 @@ import { SizeRange } from "@comp/SizeRange";
 export const DrawCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [context, setContext] = useState<CanvasRenderingContext2D>()
-  const [lineColor, setLineColor] = useState('rgb(78, 78, 78)')
+  const [lineColor, setLineColor] = useState('rgb(0, 0, 0)')
   const [lineSize, setLineSize] = useState(25)
 
   useEffect(() => {

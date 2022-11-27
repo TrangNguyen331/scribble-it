@@ -10,7 +10,7 @@ interface Props {
 export const ColorPicker = ({ pickColor, setPickColor }: Props) => {
   const colorList = [
     'rgb(227, 227, 227)',
-    'rgb(78, 78, 78)',
+    'rgb(0, 0, 0)',
     'rgb(237, 168, 168)',
     'rgb(220, 123, 123)',
     'rgb(176, 236, 161)',
