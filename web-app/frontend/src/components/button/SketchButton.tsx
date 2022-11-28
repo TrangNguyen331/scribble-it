@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { css } from "@emotion/css";
-import { usePredictDigits, usePredictCharacters } from "@hook/useQueries";
+import { usePredictDigitsPOST, usePredictCharactersPOST } from "@hook/useQueries";
 
 interface Props {
   context: CanvasRenderingContext2D;
@@ -17,7 +17,7 @@ export const SketchButton = ({ context }: Props) => {
     const imageData = context.getImageData(0, 0, context.canvas.width, context.canvas.height);
     const imageBase64 = context.canvas.toDataURL()
     
-    const data = usePredictDigits(imageBase64)
+    const data = usePredictDigitsPOST(imageBase64)
     return data
   }
 
@@ -25,7 +25,7 @@ export const SketchButton = ({ context }: Props) => {
     const imageData = context.getImageData(0, 0, context.canvas.width, context.canvas.height);
     const imageBase64 = context.canvas.toDataURL()
     
-    const data = usePredictCharacters(imageBase64)
+    const data = usePredictCharactersPOST(imageBase64)
     return data
   }
 
