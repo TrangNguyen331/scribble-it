@@ -97,5 +97,5 @@ const sCanvas = css`
   height: 100%;
   margin: 0;
   z-index: -5;
-  background: #f9fdfc;
+  background: #edf3f1;
 `
