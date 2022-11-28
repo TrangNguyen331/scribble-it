@@ -1,19 +1,42 @@
 import React, { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import { css } from "@emotion/css";
-import { usePredictDigits } from "@hook/useQueries"
+import { usePredictDigits, usePredictCharacters } from "@hook/useQueries";
+
 interface Props {
   context: CanvasRenderingContext2D;
 }
 
 export const SketchButton = ({ context }: Props) => {
+  const location = useLocation()
+
   const buttonRef = useRef<HTMLDivElement>(null)
   const effectRef = useRef<HTMLSpanElement>(null)
 
-  const onClickHandle = () => {
+  const predictDigitsHandle = (): any => {
     const imageData = context.getImageData(0, 0, context.canvas.width, context.canvas.height);
     const imageBase64 = context.canvas.toDataURL()
     
     const data = usePredictDigits(imageBase64)
+    return data
+  }
+
+  const predictCharactersHandle = (): any => {
+    const imageData = context.getImageData(0, 0, context.canvas.width, context.canvas.height);
+    const imageBase64 = context.canvas.toDataURL()
+    
+    const data = usePredictCharacters(imageBase64)
+    return data
+  }
+
+  const onClickHandle = () => {
+    if (location.pathname === "/digits") {
+      const data = predictDigitsHandle()
+    }
+
+    if(location.pathname === "/characters") {
+      const data = predictCharactersHandle()
+    }
   }
 
   useEffect(() => {
