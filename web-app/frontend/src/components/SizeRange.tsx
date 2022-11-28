@@ -50,7 +50,7 @@ const makeLongShadow = (color: string, size: string) => {
 const sWrapper = css`
   position: absolute;
   left: 2%;
-  top: 29.25%;
+  top: 40%;
   transform: translateY(20%);
   width: 10px;
 `;

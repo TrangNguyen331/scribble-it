@@ -62,8 +62,7 @@ export const XmasCanvas = ({ setIsLoading }: Props) => {
         <canvas
           ref={canvasRef}
           className={sCanvas}
-          onLoad={() => window.location.reload()}
-          />  
+        />  
       </Suspense>
     </>
   )

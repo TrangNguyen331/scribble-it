@@ -9,7 +9,11 @@ import { DownloadButton } from "@comp/button/DownloadButton";
 import { ColorPicker } from "@comp/ColorPicker";
 import { SizeRange } from "@comp/SizeRange";
 
-export const DrawCanvas = () => {
+interface Props {
+  color: string;
+}
+
+export const DrawCanvas = ({ color }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [context, setContext] = useState<CanvasRenderingContext2D>()
   const [lineColor, setLineColor] = useState('rgb(0, 0, 0)')
@@ -91,7 +95,7 @@ export const DrawCanvas = () => {
         <div className={sInner}>
           <canvas 
             ref={canvasRef}
-            className={sCanvas}
+            className={sCanvas(color)}
             width={400}
             height={400}
           />
@@ -138,9 +142,9 @@ const sInner = css`
 	}
 `
 
-const sCanvas = css`
+const sCanvas = (canvas_color: string) => css`
   border-radius: 50px;
-  background-color: var(--c-green-100);
+  background-color: ${canvas_color};
   z-index: 99;
   &:hover {
     cursor: cell;    

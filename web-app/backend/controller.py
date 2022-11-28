@@ -31,18 +31,13 @@ async def predict_digits(
   G = (255 * (1 - alpha) + G * alpha).astype(np.uint8)
   B = (255 * (1 - alpha) + B * alpha).astype(np.uint8)
   image = cv2.merge((B, G, R))
-  # image = (255 - image)
-
-  # 🎄 Step 5: Thay đổi màu chữ -> trắng
-
 
   # 🎄 Step 4: Resize ảnh thành 28 x 28
   IMG_WIDTH = IMG_HEIGHT = 28
   dim = (IMG_WIDTH, IMG_HEIGHT)
   image = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
 
-  # 🎄 Step 6: Predict
-  cv2.imwrite('{}.png'.format(image_name), image)
+  # 🎄 Step 5: Predict
   image = np.invert(np.array([image[:,:,0]]))
   prediction = model_digits.predict(image)
   print(prediction)

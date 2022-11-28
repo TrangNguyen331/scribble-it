@@ -4,18 +4,18 @@ import { AnimatePresence } from 'framer-motion'
 import { DrawCanvas } from "@comp/canvas/DrawCanvas";
 import { Layout } from "@comp/Layout";
 import { Grid } from "@comp/Grid";
-import { LineCanvas } from "@comp/canvas/LineCanvas";
 import { Loading } from "@comp/Loading";
+import { CircleCanvas } from "@comp/canvas/CircleCamvas";
 
-export default function IndexPage() {
+export default function SecondPage() {
   return (
     <>
       <Layout>
         <Loading/>
         <Grid>
-          <DrawCanvas color={"#eaf8f1"}/>
+          <DrawCanvas color={'#fff1f1'}/>
         </Grid>
-        <LineCanvas />
+        <CircleCanvas/>
       </Layout>
     </>
   );

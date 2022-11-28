@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion'
 import { QueryClientProvider, QueryClient } from "react-query"
 
 import IndexPage from '@page/IndexPage'
+import SecondPage from '@page/SecondPage'
 import AboutPage from "@page/AboutPage"
 
 export default function App() {
@@ -28,6 +29,8 @@ export default function App() {
           <AnimatePresence>
             <Routes>
               <Route path="/" element={<IndexPage/>}/>
+              <Route path="/digits" element={<IndexPage/>}/>
+              <Route path="/characters" element={<SecondPage/>}/>
               <Route path="/about" element={<AboutPage/>}/>
             </Routes>
           </AnimatePresence>

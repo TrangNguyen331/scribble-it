@@ -41,7 +41,7 @@ export const ColorPicker = ({ pickColor, setPickColor }: Props) => {
 const sWrapper = css`
   position: absolute;
   left: 2%;
-  top: 3%;
+  top: 10%;
   transform: translateY(20%);
   width: 80px;
   background: white;

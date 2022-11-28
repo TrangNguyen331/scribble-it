@@ -1,9 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom'
 import { css } from "@emotion/css";
 import Marquee from "react-fast-marquee";
 
 export const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <div style={{ zIndex: 999 }}>
@@ -21,20 +24,20 @@ export const Header = () => {
             </Marquee>
           </div>
           <div className={sTittle}>
-            <h1>AI Final Project</h1>
+            <h1 onClick={() => navigate("/")}>AI Final Project</h1>
           </div>
           <div className={sGrid}>
-            <div>
-              <Link to={"/"} onLoad={() => window.location.reload()}>Trang Chủ</Link>
-            </div>
             <div>
               <Link to={"/about"}>Giới thiệu</Link>
             </div>
             <div>
-              <a href='#'>Digits Handwriting</a>
+              <Link to={"/"}>Github</Link>
             </div>
             <div>
-              <Link to={"/"}>Characters Handwriting</Link>
+              <Link to='/digits'>Digits Handwriting</Link>
+            </div>
+            <div>
+              <Link to={"/characters"}>Characters Handwriting</Link>
             </div>
           </div>
         </div>
