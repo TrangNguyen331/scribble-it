@@ -43,7 +43,11 @@ export const DrawCanvas = ({ color }: Props) => {
     const handleMouseUp = (e: MouseEvent) => {
       mouseDown = false;
     }
-  
+    
+    const handleMousLeave = (e: MouseEvent) => {
+      mouseDown = false;
+    }
+
     const handleMouseMove = (e: MouseEvent) => {
       if (mouseDown && context) {
         const canvasOffsetLeft = canvasRef.current ? canvasRef.current.getBoundingClientRect().left : 0;
@@ -75,7 +79,7 @@ export const DrawCanvas = ({ color }: Props) => {
         canvasRef.current.addEventListener('mousedown', handleMouseDown);
         canvasRef.current.addEventListener('mouseup', handleMouseUp);
         canvasRef.current.addEventListener('mousemove', handleMouseMove);
-        
+        canvasRef.current.addEventListener('mouseout', handleMousLeave);
         setContext(renderCtx);
       }
     }
@@ -85,6 +89,7 @@ export const DrawCanvas = ({ color }: Props) => {
         canvasRef.current.removeEventListener('mousedown', handleMouseDown);
         canvasRef.current.removeEventListener('mouseup', handleMouseUp);
         canvasRef.current.removeEventListener('mousemove', handleMouseMove);
+        canvasRef.current.removeEventListener('mouseout', handleMousLeave);
       }
     }
   }, [context, lineColor, lineSize]);
