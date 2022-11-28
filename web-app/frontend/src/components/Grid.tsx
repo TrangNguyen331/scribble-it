@@ -20,8 +20,8 @@ export const Grid = (props: Props) => {
 const sGrid = css`
   padding-left: 1.25em;
   padding-right: 1.25em;
-  padding-top: 2em;
-  padding-bottom: 2em;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
   z-index: -1;
   display: flex;
   flex-direction: column;

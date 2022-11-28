@@ -17,7 +17,7 @@ export const DrawCanvas = ({ color }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [context, setContext] = useState<CanvasRenderingContext2D>()
   const [lineColor, setLineColor] = useState('rgb(0, 0, 0)')
-  const [lineSize, setLineSize] = useState(25)
+  const [lineSize, setLineSize] = useState(15)
 
   useEffect(() => {
     let mouseDown: boolean = false;
@@ -96,8 +96,8 @@ export const DrawCanvas = ({ color }: Props) => {
           <canvas 
             ref={canvasRef}
             className={sCanvas(color)}
-            width={400}
-            height={400}
+            width={500}
+            height={500}
           />
           <div className={sGrid}>
             <SketchButton context={context!}/>
@@ -126,7 +126,7 @@ const sInner = css`
   border: var(--b-md) solid black;
   border-radius: 50px;
   background-color: var(--c-white);
-  padding: 2em 1.25em;
+  padding: 1.5em 1em;
 	&::after {
 		content: "";
 		display: block;

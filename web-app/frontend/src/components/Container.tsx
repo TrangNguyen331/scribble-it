@@ -27,7 +27,7 @@ const sContainer = css`
   flex-direction: column;
 	align-items: center;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 15px;
-  height: 90vh;
+  height: 95vh;
   width: 95vw;
   margin: auto;
   border: 4px solid black;

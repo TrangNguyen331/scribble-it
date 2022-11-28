@@ -17,7 +17,7 @@ export const SizeRange = ({ lineSize, setLineSize }: Props) => {
         <input 
           className={sSlide}
           type={"range"}
-          min="10" max="40" 
+          min="10" max="30" 
           value={lineSize} 
           onChange={onChangeHandle}
         />
