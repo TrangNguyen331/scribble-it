@@ -9,18 +9,22 @@ const AxiosInstance = axios.create({
   }
 })
 
-export const usePredictDigitsPOST = (imageBase64Encode: string) => {
+export const usePredictDigitsPOST = async (imageBase64Encode: string) => {
   const formData = new FormData()
   formData.append("image_name", "image_predict.png")
   formData.append("image_base64_encode", imageBase64Encode)
 
-  return AxiosInstance.post("predict_digits", formData)
+  const { data } = await AxiosInstance
+    .post("predict_digits", formData)
+  return data;
 }
 
-export const usePredictCharactersPOST = (imageBase64Encode: string) => {
+export const usePredictCharactersPOST = async (imageBase64Encode: string) => {
   const formData = new FormData()
   formData.append("image_name", "image_predict.png")
   formData.append("image_base64_encode", imageBase64Encode)
 
-  return AxiosInstance.post("predict_characters", formData)
+  const { data } = await AxiosInstance
+    .post("predict_characters", formData)
+  return data;
 }

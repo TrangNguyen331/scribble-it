@@ -29,8 +29,8 @@ export default function App() {
           <AnimatePresence>
             <Routes>
               <Route path="/" element={<IndexPage/>}/>
-              <Route path="/digits" element={<IndexPage/>}/>
-              <Route path="/characters" element={<SecondPage/>}/>
+              <Route path="/characters" element={<IndexPage/>}/>
+              <Route path="/digits" element={<SecondPage/>}/>
               <Route path="/about" element={<AboutPage/>}/>
             </Routes>
           </AnimatePresence>

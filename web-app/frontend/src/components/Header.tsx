@@ -24,14 +24,14 @@ export const Header = () => {
             </Marquee>
           </div>
           <div className={sTittle}>
-            <h1 onClick={() => navigate("/")}>AI Final Project</h1>
+            <a onClick={() => navigate("/")}>AI Final Project</a>
           </div>
           <div className={sGrid}>
             <div>
               <Link to={"/about"}>Giới thiệu</Link>
             </div>
             <div>
-              <Link to={"/"}>Github</Link>
+              <a href={"https://github.com/TrangNguyen331/scribble-it"}>Github</a>
             </div>
             <div>
               <Link to='/digits'>Digits Handwriting</Link>
@@ -88,6 +88,8 @@ const sMarqueeWrapper = css`
 `;
 
 const sTittle = css`
+  font-size: 1.5em;
+  font-weight: 500;
   user-select: none;
   padding: 0.5em 1em;
   display: flex;
@@ -103,9 +105,8 @@ const sTittle = css`
     var(--c-pink-100) 6px,
     var(--c-pink-100) 12px
   );
-  h1 {
-    font-size: 1.5em;
-    font-weight: 500;
+  &:hover {
+    cursor: crosshair;
   }
 `;
 

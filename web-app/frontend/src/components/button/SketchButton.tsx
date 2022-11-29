@@ -5,15 +5,16 @@ import { usePredictDigitsPOST, usePredictCharactersPOST } from "@hook/useQueries
 
 interface Props {
   context: CanvasRenderingContext2D;
+  setPred: React.Dispatch<React.SetStateAction<Array<number>>>;
 }
 
-export const SketchButton = ({ context }: Props) => {
+export const SketchButton = ({ context, setPred }: Props) => {
   const location = useLocation()
 
   const buttonRef = useRef<HTMLDivElement>(null)
   const effectRef = useRef<HTMLSpanElement>(null)
 
-  const predictDigitsHandle = (): any => {
+  const predictDigitsHandle = (): Promise<any> => {
     const imageData = context.getImageData(0, 0, context.canvas.width, context.canvas.height);
     const imageBase64 = context.canvas.toDataURL()
     
@@ -21,7 +22,7 @@ export const SketchButton = ({ context }: Props) => {
     return data
   }
 
-  const predictCharactersHandle = (): any => {
+  const predictCharactersHandle = (): Promise<any> => {
     const imageData = context.getImageData(0, 0, context.canvas.width, context.canvas.height);
     const imageBase64 = context.canvas.toDataURL()
     
@@ -30,16 +31,17 @@ export const SketchButton = ({ context }: Props) => {
   }
 
   const onClickHandle = () => {
-    if (location.pathname === "/") {
-      const data = predictDigitsHandle()
-    }
-    
     if (location.pathname === "/digits") {
-      const data = predictDigitsHandle()
-    }
-
-    if(location.pathname === "/characters") {
+        const data = predictDigitsHandle()
+        .then(result => {
+          setPred(result["result_all"][0])
+        })
+      }
+    else {
       const data = predictCharactersHandle()
+        .then(result => {
+          setPred(result["result_all"][0])
+        })
     }
   }
 
