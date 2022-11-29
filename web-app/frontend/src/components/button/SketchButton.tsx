@@ -30,6 +30,10 @@ export const SketchButton = ({ context }: Props) => {
   }
 
   const onClickHandle = () => {
+    if (location.pathname === "/") {
+      const data = predictDigitsHandle()
+    }
+    
     if (location.pathname === "/digits") {
       const data = predictDigitsHandle()
     }

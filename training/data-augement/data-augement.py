@@ -1,15 +1,15 @@
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 
+import numpy as np
+import tensorflow as tf
+import cv2
+
 from aug_shift import aug_shift
 from aug_shear import aug_shear
 from aug_rotate import aug_rotate
 from aug_zoom import aug_zoom
 from aug_combine import aug_combine
-
-import numpy as np
-import tensorflow as tf
-import cv2
 
 IMAGES_RAW_DIR = "./images-raw"
 IMAGES_GEN_DIR = "./images-generate"
