@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState} from "react";
 import { css } from '@emotion/css'
+import { motion, Variants } from "framer-motion";
 
-import { tCoordinates2D, iDrawLine } from "@type/index";
+import { tCoordinates2D } from "@type/index";
 import { drawLine  } from "@util/drawUtil";
 import { SketchButton } from "@comp/button/SketchButton";
 import { ReloadButton } from "@comp/button/ReloadButton";
@@ -12,6 +13,13 @@ import { SizeRange } from "@comp/SizeRange";
 interface Props {
   color: string;
 }
+
+const trans = { duration: 0.5, ease: "easeInOut" };
+const variants: Variants = {
+  hidden: { opacity: 0, y: "-0%" },
+  enter: { opacity: 1, y: "0%", transition: trans },
+  exit: { opacity: 0, y: "-0%" },
+};
 
 export const DrawCanvas = ({ color }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -96,7 +104,13 @@ export const DrawCanvas = ({ color }: Props) => {
 
   return (
     <>
-      <div className={sWrapper}>
+      <motion.div 
+        className={sWrapper}
+        initial="hidden"
+        animate="enter"
+        exit="exit"
+        variants={variants}
+      >
         <div className={sInner}>
           <canvas 
             ref={canvasRef}
@@ -109,7 +123,7 @@ export const DrawCanvas = ({ color }: Props) => {
             <ReloadButton context={context!}/>
           </div>
         </div>
-      </div>
+      </motion.div>
       <ColorPicker pickColor={lineColor} setPickColor={setLineColor}/>
       <SizeRange lineSize={lineSize} setLineSize={setLineSize}/>
       <DownloadButton context={context!}/>

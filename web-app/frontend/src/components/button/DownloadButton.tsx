@@ -1,9 +1,17 @@
 import React, { useEffect, useRef } from "react";
 import { css } from "@emotion/css";
+import { motion, Variants } from "framer-motion";
 
 interface Props {
   context: CanvasRenderingContext2D;
 }
+
+const trans = { duration: 1, ease: "easeInOut" };
+const variants: Variants = {
+  hidden: { opacity: 0, x: "50%" },
+  enter: { opacity: 1, x: "0%", transition: trans },
+  exit: { opacity: 0, x: "50%" },
+};
 
 export const DownloadButton = ({ context }: Props) => {
   const buttonRef = useRef<HTMLDivElement>(null)
@@ -64,7 +72,14 @@ export const DownloadButton = ({ context }: Props) => {
 
   return (
     <>
-      <div ref={buttonRef} className={sWrapper} onClick={downloadHandle}>
+      <motion.div 
+        ref={buttonRef} className={sWrapper} 
+        onClick={downloadHandle}
+        initial="hidden"
+        animate="enter"
+        exit="exit"
+        variants={variants}
+      >
         <a className={sInner}>
           <div className={sTitle}>
             Lưu ảnh
@@ -78,7 +93,7 @@ export const DownloadButton = ({ context }: Props) => {
             </svg>
           </div>
         </a>
-      </div>
+      </motion.div>
     </>
   )
 }

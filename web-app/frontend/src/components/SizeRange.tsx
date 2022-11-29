@@ -1,10 +1,18 @@
 import React, { ChangeEvent } from "react";
 import { css } from "@emotion/css";
+import { motion, Variants } from "framer-motion";
 
 interface Props {
   lineSize: number;
   setLineSize: React.Dispatch<React.SetStateAction<number>>;
 }
+
+const trans = { duration: 1, ease: "easeInOut" };
+const variants: Variants = {
+  hidden: { opacity: 0, x: "-500%" },
+  enter: { opacity: 1, x: "50%", transition: trans },
+  exit: { opacity: 0, x: "-500%" },
+};
 
 export const SizeRange = ({ lineSize, setLineSize }: Props) => {
   const onChangeHandle = (e: any) => {
@@ -12,7 +20,13 @@ export const SizeRange = ({ lineSize, setLineSize }: Props) => {
   }
 
   return (
-    <div className={sWrapper}>
+    <motion.div 
+      className={sWrapper}
+      initial="hidden"
+      animate="enter"
+      exit="exit"
+      variants={variants}
+    >
       <div className={sSlideContainer}>
         <input 
           className={sSlide}
@@ -22,7 +36,7 @@ export const SizeRange = ({ lineSize, setLineSize }: Props) => {
           onChange={onChangeHandle}
         />
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -49,7 +63,7 @@ const makeLongShadow = (color: string, size: string) => {
 
 const sWrapper = css`
   position: absolute;
-  left: 2%;
+  left: 5%;
   top: 40%;
   transform: translateY(20%);
   width: 10px;

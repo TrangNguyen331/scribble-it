@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import { css } from "@emotion/css";
+import { motion, Variants } from "framer-motion";
 import { SingleColor } from "./SingleColor";
 
 interface Props {
   pickColor: string;
   setPickColor: React.Dispatch<React.SetStateAction<string>>;
 }
+
+const trans = { duration: 1, ease: "easeInOut" };
+const variants: Variants = {
+  hidden: { opacity: 0, x: "-50%" },
+  enter: { opacity: 1, x: "50%", transition: trans },
+  exit: { opacity: 0, x: "-50%" },
+};
 
 export const ColorPicker = ({ pickColor, setPickColor }: Props) => {
   const colorList = [
@@ -22,7 +30,13 @@ export const ColorPicker = ({ pickColor, setPickColor }: Props) => {
 
   return (
     <>
-      <div className={sWrapper}>
+      <motion.div 
+        className={sWrapper}
+        initial="hidden"
+        animate="enter"
+        exit="exit"
+        variants={variants}
+      >
         <div className={sColorList}>
           { colorList.map((color) => (
             <SingleColor
@@ -33,7 +47,7 @@ export const ColorPicker = ({ pickColor, setPickColor }: Props) => {
             />
           ))}
         </div>
-      </div>
+      </motion.div>
     </>
   )
 }
@@ -41,7 +55,7 @@ export const ColorPicker = ({ pickColor, setPickColor }: Props) => {
 const sWrapper = css`
   position: absolute;
   left: 2%;
-  top: 10%;
+  top: 20%;
   transform: translateY(20%);
   width: 80px;
   background: white;
