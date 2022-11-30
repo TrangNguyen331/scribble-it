@@ -13,18 +13,16 @@
 ## About
 This is my AI Final Project
 
-## Features
-### Characters Handwriting
-[Characters Handwriting](https://github.com/TrangNguyen331/scribble-it/blob/master/capture/characters-handwriting.png)
-
-
-### Digits Handwriting
-[Digits Handwriting](https://github.com/TrangNguyen331/scribble-it/blob/master/capture/digits-handwriting.png)
-
-
-## WebGL Intro
-[WebGL Intro](https://github.com/TrangNguyen331/scribble-it/blob/master/capture/webgl-intro.png)
-
 ## Author 
 - > [Trang Nguyen](https://github.com/TrangNguyen331/scribble-it)
 - > [Thanh Tuyet](https://github.com/snow-1822tuyet)
+
+## Features
+### Characters Handwriting
+<img src="https://github.com/TrangNguyen331/scribble-it/blob/master/capture/characters-handwriting.png" width="1000"></img>
+
+### Digits Handwriting
+<img src="https://github.com/TrangNguyen331/scribble-it/blob/master/capture/digits-handwriting.png" width="1000"></img>
+
+## WebGL Intro
+<img src="https://github.com/TrangNguyen331/scribble-it/blob/master/capture/webgl-intro.png" width="1000"></img>
