@@ -94,6 +94,6 @@ async def predict_characters(
 
   """ Response tỉ lệ của tất cả các số & số có tỉ lệ cao nhất"""
   return { 
-    "result_probably": int(np.argmax(prediction)),
+    "result_probably": int(np.argmax(prediction)+1),
     "result_all": prediction.tolist()
   }
