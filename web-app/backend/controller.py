@@ -8,19 +8,19 @@ import base64
 import cv2
 import json
 
-""" Load digts model & character model """
+""" Load digits model & characters model """
 model_digits = keras.models.load_model('./models/model_digits.h5')
 model_characters = keras.models.load_model('./models/model_characters.h5')
 
 keras_router = APIRouter(prefix='/api', tags=['Keras'])
 
-""" Endpoint for Digits Handwriting Predict"""
+""" Endpoint for Digits Handwriting Predict """
 @keras_router.post('/predict_digits')
 async def predict_digits(
   image_name: str = Form(...),
   image_base64_encode: str = Form(...)
 ) -> dict:
-  """ Ảnh đầu vào có định dạng RGBA, kích thước 400 x 400"""
+  """ Ảnh đầu vào có định dạng RGBA, kích thước 400 x 400 """
   """ Predict Pipeline """
   # 🎄 Step 1: Decode chuỗi định dạng base64
   image_base64 = image_base64_encode.split(';base64,').pop()
@@ -50,19 +50,19 @@ async def predict_digits(
   print(prediction)
   print("The number is probably a {}". format(np.argmax(prediction)))
 
-  """ Response tỉ lệ của tất cả các số & số có tỉ lệ cao nhất"""
+  """ Response tỉ lệ của tất cả các số & số có tỉ lệ cao nhất """
   return { 
     "result_probably": int(np.argmax(prediction)),
     "result_all": prediction.tolist()
   }
 
-""" Endpoint for Characters Handwriting Predict"""
+""" Endpoint for Characters Handwriting Predict """
 @keras_router.post('/predict_characters')
 async def predict_characters(
   image_name: str = Form(...),
   image_base64_encode: str = Form(...)
 ) -> dict:
-  """ Ảnh đầu vào có định dạng RGBA, kích thước 400 x 400"""
+  """ Ảnh đầu vào có định dạng RGBA, kích thước 400 x 400 """
   """ Predict Pipeline """
   # 🎄 Step 1: Decode chuỗi định dạng base64
   image_base64 = image_base64_encode.split(';base64,').pop()
